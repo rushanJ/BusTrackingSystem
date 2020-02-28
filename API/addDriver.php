@@ -1,5 +1,6 @@
 <?php
 include 'config.php';
+header("Content-Type: application/json; charset=UTF-8");
 $nic= $_POST['nic'];
 $name= $_POST['name'];
 $status= $_POST['status'];
@@ -17,12 +18,12 @@ ON DUPLICATE KEY UPDATE
 //echo $sql;
 if(mysqli_query($conn, $sql)){
     $myObj=new \stdClass();
-    $myObj->status = 1;
+    $myObj->success = true;
     $myJSON = json_encode($myObj);
     echo $myJSON;
 } else{
     $myObj=new \stdClass();
-    $myObj->status = 0;
+    $myObj->success = false;
     $myJSON = json_encode($myObj);
     echo $myJSON;
 }

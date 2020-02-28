@@ -1,11 +1,11 @@
 <?php
-session_start();
+//session_start();
 $userName=$_REQUEST['userName'];
 $pass=$_REQUEST['pass'];
-
+header("Content-Type: application/json; charset=UTF-8");
 if ($userName=="admin"&& $pass=="nimda"){
     $myObj=new \stdClass();
-    $myObj->status = 1;
+    $myObj->success = true;
     $myObj->user = "ADMIN";
     $myObj->role = "ADMIN";
     $myObj->id = 0;
@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
         $name=$row["name"];
         $role=$row["role"];
         $myObj=new \stdClass();
-        $myObj->status = 1;
+        $myObj->success = true;
         $myObj->user = $name;
         $myObj->role = $role;
         $myObj->id = $id;
@@ -32,9 +32,10 @@ if ($result->num_rows > 0) {
         echo $myJSON;
      
     }
-} else {
+} 
+else {
     $myObj=new \stdClass();
-    $myObj->status = 0;
+    $myObj->success = false;
     $myObj->user = 0;
     $myObj->role =0;
     $myObj->id = -1;

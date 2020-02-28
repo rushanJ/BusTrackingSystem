@@ -9,12 +9,12 @@ $sql =
 //echo $sql;
 if(mysqli_query($conn, $sql)){
     $myObj=new \stdClass();
-    $myObj->status = 1;
+    $myObj->success = true;
     $myJSON = json_encode($myObj);
     echo $myJSON;
 } else{
     $myObj=new \stdClass();
-    $myObj->status = 0;
+    $myObj->success = false;
     $myJSON = json_encode($myObj);
     echo $myJSON;
 }

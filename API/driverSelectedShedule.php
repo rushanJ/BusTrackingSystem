@@ -1,11 +1,12 @@
 <?php
 $id=$_REQUEST["id"];
-$today=date("Y-m-d");
+$tody=date("Y-m-d");
 header("Content-Type: application/json; charset=UTF-8");
+include_once "config.php";
+$sql = "SELECT * FROM `shedule` WHERE `id`='$id'";
+
 // $obj = json_decode($_GET["x"], false);
 
-include_once "config.php";
-$sql = "SELECT * FROM `shedule` WHERE `driver`='$id'AND `date`='$today'";
 $stmt = $conn->prepare($sql);
 // $stmt->bind_param("ss", $obj->table, $obj->limit);
 $stmt->execute();

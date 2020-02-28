@@ -1,5 +1,7 @@
 <?php
 include 'config.php';
+header("Content-Type: application/json; charset=UTF-8");
+
 $studentID= $_POST['studentID'];
 $name= $_POST['name'];
 $role= $_POST['role'];
