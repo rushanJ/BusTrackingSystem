@@ -8,7 +8,7 @@ import TextInput from '../components/TextInput';
 import BackButton from '../components/BackButton';
 import { theme } from '../core/theme';
 import { emailValidator, passwordValidator } from '../core/utils';
-
+import axios from 'axios';
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
@@ -17,13 +17,31 @@ const LoginScreen = ({ navigation }) => {
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
 
-    if (emailError || passwordError) {
-      setEmail({ ...email, error: emailError });
-      setPassword({ ...password, error: passwordError });
-      return;
-    }
-
-    navigation.navigate('Dashboard');
+    // if (emailError || passwordError) {
+    //   setEmail({ ...email, error: emailError });
+    //   setPassword({ ...password, error: passwordError });
+    //   return;
+   // }
+   const options = {
+    headers: {'Content-Type': 'application/json'}
+  };
+  axios.defaults.baseURL = 'http://10.10.87.183:3000';
+   axios.defaults.headers.post['Content-Type'] = 'application/json';
+  axios  
+  .post("/auth", 
+  ({
+    userName: "admin",
+    pass: "nimda"
+   })    
+  )
+    .then(function (response) {
+      console.log(response.data.success);
+      if (response.data.success) navigation.navigate('Dashboard');
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+   // navigation.navigate('Dashboard');
   };
 
   return (
