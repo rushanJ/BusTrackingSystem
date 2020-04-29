@@ -3,3 +3,7 @@ export { default as LoginScreen } from './LoginScreen';
 export { default as RegisterScreen } from './RegisterScreen';
 export { default as ForgotPasswordScreen } from './ForgotPasswordScreen';
 export { default as Dashboard } from './Dashboard';
+export { default as DashboardStu } from './DashboardStu';
+export { default as TodayShedule } from './TodayShedule';
+export { default as SelectShedule } from './SelectShedule';
+export { default as DriverMap } from './DriverMap';

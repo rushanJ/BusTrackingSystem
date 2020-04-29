@@ -8,8 +8,10 @@ import Paragraph from '../components/Paragraph';
 const HomeScreen = ({ navigation }) => (
   <Background>
     <Logo />
-    <Header>NSBM Shuttle Service</Header>
-   
+    <Header>Welcome NSBM! </Header>
+    <Header>Bus Tracking System </Header>
+
+    
     <Button mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
       Login
     </Button>

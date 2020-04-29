@@ -8,11 +8,17 @@ import Button from '../components/Button';
 const Dashboard = ({ navigation }) => (
   <Background>
     <Logo />
-    <Header>Let’s start</Header>
-    <Paragraph>
-      Your amazing app starts here. Open you favourite code editor and start
-      editing this project.
-    </Paragraph>
+    <Header>Welcome !</Header>
+    <Button mode="outlined" onPress={() => navigation.navigate('SelectShedule')}>
+      Today Shedule
+    </Button>
+    <Button mode="outlined" onPress={() => navigation.navigate('DriverMap')}>
+Map    </Button>
+
+    {/* <Button mode="outlined" onPress={() => navigation.navigate('DriverMap')}>
+       Subscriptions
+    </Button> */}
+    
     <Button mode="outlined" onPress={() => navigation.navigate('HomeScreen')}>
       Logout
     </Button>

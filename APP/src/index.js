@@ -7,6 +7,10 @@ import {
   RegisterScreen,
   ForgotPasswordScreen,
   Dashboard,
+  DashboardStu,
+  TodayShedule,
+  SelectShedule,
+  DriverMap,
 } from './screens';
 
 const Router = createStackNavigator(
@@ -16,6 +20,10 @@ const Router = createStackNavigator(
     RegisterScreen,
     ForgotPasswordScreen,
     Dashboard,
+    TodayShedule,
+    DashboardStu,
+    SelectShedule,
+    DriverMap,
   },
   {
     initialRouteName: 'LoginScreen',

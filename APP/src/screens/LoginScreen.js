@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react';
-import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+import {AsyncStorage, TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import Background from '../components/Background';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
@@ -8,40 +8,48 @@ import TextInput from '../components/TextInput';
 import BackButton from '../components/BackButton';
 import { theme } from '../core/theme';
 import { emailValidator, passwordValidator } from '../core/utils';
-import axios from 'axios';
+const axios = require('axios');
+
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState({ value: '', error: '' });
-  const [password, setPassword] = useState({ value: '', error: '' });
+  const [email, setEmail] = useState({ value: 'rushan', error: '' });
+  const [password, setPassword] = useState({ value: 'rushan', error: '' });
+
+
+  
+
 
   const _onLoginPressed = () => {
-    const emailError = emailValidator(email.value);
-    const passwordError = passwordValidator(password.value);
-
-    // if (emailError || passwordError) {
-    //   setEmail({ ...email, error: emailError });
-    //   setPassword({ ...password, error: passwordError });
-    //   return;
-   // }
-   const options = {
-    headers: {'Content-Type': 'application/json'}
-  };
-  axios.defaults.baseURL = 'http://10.10.87.183:3000';
-   axios.defaults.headers.post['Content-Type'] = 'application/json';
-  axios  
-  .post("/auth", 
-  ({
-    userName: "admin",
-    pass: "nimda"
-   })    
-  )
+    var userName=email.value;
+    var pass=password.value;
+    // url="http://192.168.8.100/BusTrackingSystem/API/auth.php?userName="+userName+"&pass="+pass;
+    // console.log(url);
+    axios.post("http://192.168.8.100/BusTrackingSystem/API/auth.php?userName="+userName+"&pass="+pass, {
+      userName: 'admin',
+      pass: 'pass'
+    })
     .then(function (response) {
-      console.log(response.data.success);
-      if (response.data.success) navigation.navigate('Dashboard');
+      //console.log(response.data.role);
+      if (response.data.success && response.data.role=="STUDENT" )
+       {
+       
+        AsyncStorage.setItem('id', JSON.stringify(response.data.id), () => {});
+          navigation.navigate('DashboardStu');
+      }
+      else  if (response.data.success && response.data.role=="DRIVER" ) 
+      {
+        
+        AsyncStorage.setItem('id', response.data.id, () => {});
+        
+      navigation.navigate('Dashboard');
+    }
+
+      else alert("Error in login");
     })
     .catch(function (error) {
       console.log(error);
     });
-   // navigation.navigate('Dashboard');
+
+    //navigation.navigate('DashboardStu');
   };
 
   return (
@@ -60,9 +68,9 @@ const LoginScreen = ({ navigation }) => {
         error={!!email.error}
         errorText={email.error}
         autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
+        // autoCompleteType="email"
+        // textContentType="emailAddress"
+        // keyboardType="email-address"
       />
 
       <TextInput

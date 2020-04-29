@@ -50,6 +50,15 @@ const RegisterScreen = ({ navigation }) => {
         errorText={name.error}
       />
 
+<TextInput
+        label="Index Number"
+        returnKeyType="next"
+        value={name.value}
+        onChangeText={text => setName({ value: text, error: '' })}
+        error={!!name.error}
+        errorText={name.error}
+      />
+
       <TextInput
         label="Email"
         returnKeyType="next"
