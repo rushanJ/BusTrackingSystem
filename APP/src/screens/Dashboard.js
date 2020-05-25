@@ -9,7 +9,7 @@ const Dashboard = ({ navigation }) => (
   <Background>
     <Logo />
     <Header>Welcome !</Header>
-    <Button mode="outlined" onPress={() => navigation.navigate('SelectShedule')}>
+    <Button mode="outlined" onPress={() => navigation.navigate('SelectSheduleDriver')}>
       Today Shedule
     </Button>
     <Button mode="outlined" onPress={() => navigation.navigate('DriverMap')}>

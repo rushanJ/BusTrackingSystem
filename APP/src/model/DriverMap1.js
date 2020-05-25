@@ -1,13 +1,16 @@
-import React, { Component } from 'react'
+import React, { memo,useState } from 'react'
 import { View, WebView, StyleSheet }
 
 from 'react-native'
+
 const WebViewExample = () => {
+   const [user, setUser] = useState({ value: '', error: '' });
+   AsyncStorage.getItem('user').then((value) => setUser({ value: value, error: '' }));
    return (
       <View style = {styles.container}>
          <WebView
          source = {{ uri:
-         'https://www.google.com/maps/@7.3199726,80.3111117,16z' }}
+         'http://critssl.com/BusTrackingSystem/driverMap.php?id=' }}
          />
       </View>
    )

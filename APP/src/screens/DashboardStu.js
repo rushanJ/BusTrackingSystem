@@ -19,7 +19,7 @@ const Dashboard = ({ navigation }) => (
     <Button mode="outlined" onPress={() => navigation.navigate('HomeScreen')}>
       My Subscriptions
     </Button> */}
-    <Button mode="outlined" onPress={() => navigation.navigate('HomeScreen')}>
+    <Button mode="outlined" onPress={() => navigation.navigate('ViewAllBuses')}>
       View All busses
     </Button>
     <Button mode="outlined" onPress={() => navigation.navigate('HomeScreen')}>

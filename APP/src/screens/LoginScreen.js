@@ -11,8 +11,8 @@ import { emailValidator, passwordValidator } from '../core/utils';
 const axios = require('axios');
 
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState({ value: 'rushan', error: '' });
-  const [password, setPassword] = useState({ value: 'rushan', error: '' });
+  const [email, setEmail] = useState({ value: '', error: '' });
+  const [password, setPassword] = useState({ value: '', error: '' });
 
 
   
@@ -21,9 +21,9 @@ const LoginScreen = ({ navigation }) => {
   const _onLoginPressed = () => {
     var userName=email.value;
     var pass=password.value;
-    // url="http://192.168.8.100/BusTrackingSystem/API/auth.php?userName="+userName+"&pass="+pass;
+    // url="http://critssl.com/BusTrackingSystem/API/auth.php?userName="+userName+"&pass="+pass;
     // console.log(url);
-    axios.post("http://192.168.8.100/BusTrackingSystem/API/auth.php?userName="+userName+"&pass="+pass, {
+    axios.post("http://critssl.com/BusTrackingSystem/API/auth.php?userName="+userName+"&pass="+pass, {
       userName: 'admin',
       pass: 'pass'
     })

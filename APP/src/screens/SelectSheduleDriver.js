@@ -4,7 +4,7 @@ import Logo from '../components/Logo';
 import Header from '../components/Header';
 import Paragraph from '../components/Paragraph';
 import Button from '../components/Button';
-import SheduleList from '../model/SheduleList'
+import SheduleList from '../model/SheduleListDriver'
 const Dashboard = ({ navigation }) => (
   <Background>
     <Logo />

@@ -10,6 +10,7 @@ import {
   DashboardStu,
   TodayShedule,
   SelectShedule,
+  ViewAllBuses,
   DriverMap,
 } from './screens';
 
@@ -23,10 +24,11 @@ const Router = createStackNavigator(
     TodayShedule,
     DashboardStu,
     SelectShedule,
+    ViewAllBuses,
     DriverMap,
   },
   {
-    initialRouteName: 'LoginScreen',
+    initialRouteName: 'HomeScreen',
     headerMode: 'none',
   }
 );
